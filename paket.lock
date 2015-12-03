@@ -12,6 +12,7 @@ NUGET
       Microsoft.Bcl (>= 1.1.10)
       Microsoft.Bcl.Build (>= 1.0.14)
     Newtonsoft.Json (7.0.1)
+    NUnit (2.6.4)
     TweetinviAPI (0.9.10)
       Autofac (>= 3.5.2)
       Microsoft.Bcl.Async (>= 1.0.168)
