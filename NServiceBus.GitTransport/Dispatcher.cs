@@ -27,4 +27,12 @@ namespace NServiceBus.GitTransport
             return Task.FromResult(0);
         }
     }
+
+    public class QueueCreator : ICreateQueues
+    {
+        public Task CreateQueueIfNecessary(QueueBindings queueBindings, string identity)
+        {
+            return Task.CompletedTask;
+        }
+    }
 }

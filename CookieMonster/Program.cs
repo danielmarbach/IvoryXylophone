@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿
+
+using System.Threading.Tasks;
+using NServiceBus.GitTransport;
 
 namespace CookieMonster
 {
@@ -20,6 +23,8 @@ namespace CookieMonster
             var busConfiguration = new BusConfiguration();
 
             busConfiguration.UsePersistence<InMemoryPersistence>();
+            busConfiguration.UseTransport<Git>().ConnectionString("asdfasdf");
+
             busConfiguration.SendFailedMessagesTo("error");
             busConfiguration.AuditProcessedMessagesTo("audit");
 

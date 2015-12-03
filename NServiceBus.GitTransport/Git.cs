@@ -2,14 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using NServiceBus.Settings;
+using NServiceBus.Support;
 using NServiceBus.Transports;
 
 namespace NServiceBus.GitTransport
 {
-    public class GitTransport : TransportDefinition
+    public class Git : TransportDefinition
     {
         protected override void ConfigureForReceiving(TransportReceivingConfigurationContext context)
         {
+            context.SetQueueCreatorFactory(() => new QueueCreator());
             context.SetMessagePumpFactory(c => new PushMessages(context.Settings.EndpointInstanceName().EndpointName));
         }
 
@@ -30,22 +32,22 @@ namespace NServiceBus.GitTransport
 
         public override IManageSubscriptions GetSubscriptionManager()
         {
-            return null;
+            throw new NotSupportedException();
         }
 
         public override string GetDiscriminatorForThisEndpointInstance()
         {
-            return null;
+            return RuntimeEnvironment.MachineName;
         }
 
         public override string ToTransportAddress(LogicalAddress logicalAddress)
         {
-            return null;
+            return logicalAddress.ToString();
         }
 
         public override OutboundRoutingPolicy GetOutboundRoutingPolicy(ReadOnlySettings settings)
         {
-            return null;
+            return new OutboundRoutingPolicy(OutboundRoutingType.DirectSend, OutboundRoutingType.DirectSend, OutboundRoutingType.DirectSend);
         }
 
         public override string ExampleConnectionStringForErrorMessage { get; }
