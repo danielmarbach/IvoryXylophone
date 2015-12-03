@@ -68,7 +68,7 @@ namespace NServiceBus.GitTransport
                                         .Select(kvp => new { Key = kvp[0], Value = kvp[1] })
                                         .ToDictionary(x => x.Key, x => x.Value);
 
-                                    var treeEntry = commit.Tree.FirstOrDefault(x => x.Name == "message.payload");
+                                    var treeEntry = commit.Tree.FirstOrDefault(x => x.Name.EndsWith(".payload"));
                                     if (treeEntry != null)
                                     {
                                         await writer.WriteAsync(File.ReadAllText(treeEntry.Path)).ConfigureAwait(false);
