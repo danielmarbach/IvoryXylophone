@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Anything.Contracts;
 using NServiceBus;
 
@@ -8,7 +9,12 @@ namespace CookieMonster
     {
         public Task Handle(KnockKnock message, IMessageHandlerContext context)
         {
-            var service = new TweetService("70Q2snrryqQEjU1MOFcL8jRGo", "USDkARHUa7DGRmipwVoVkCUevLfku3ltqWXbj7W1Ks3itBOZGO", "2993705991-8aelrNnfwD6dFD0AOBFHfeU4qWHLn9VH7AkQaB8", "0W16SbLl5A126fLwc3KBoGtAUKNkK5UqlUujbB6yKKsWU");
+            var authToken = Environment.GetEnvironmentVariable("IvoryXylophone.AuthToken");
+            var authTokenSecret = Environment.GetEnvironmentVariable("IvoryXylophone.AuthTokenSecret");
+
+            var service = new TweetService("70Q2snrryqQEjU1MOFcL8jRGo", "USDkARHUa7DGRmipwVoVkCUevLfku3ltqWXbj7W1Ks3itBOZGO", 
+                authToken, authTokenSecret);
+
             service.Publish(message.Message);
             return Task.FromResult(0);
         }
