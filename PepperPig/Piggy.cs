@@ -59,6 +59,16 @@ namespace PepperPig
                                 .Replace(track, null)
                                 .Replace(userName, null).Trim(),
                         };
+
+                        ColorConsole.WriteLine(
+                            $"Starting saga".Gray(),
+                            " ",
+                            $"{command.MessageId}".Cyan(),
+                            " ",
+                            $"to say:".Gray(),
+                            " ",
+                            $"{command.Text}".White());
+
                         endpoint.CreateBusContext().Send(command).Wait();
                     };
 
