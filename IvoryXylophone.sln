@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anything", "Anything\Anythi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PepperPig", "PepperPig\PepperPig.csproj", "{3829A418-111A-4FB8-87C8-A2C6438205EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anything.Contracts", "Anything.Contracts\Anything.Contracts.csproj", "{6EA32112-EF4D-439A-874B-311294D3523C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3829A418-111A-4FB8-87C8-A2C6438205EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3829A418-111A-4FB8-87C8-A2C6438205EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3829A418-111A-4FB8-87C8-A2C6438205EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EA32112-EF4D-439A-874B-311294D3523C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EA32112-EF4D-439A-874B-311294D3523C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EA32112-EF4D-439A-874B-311294D3523C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EA32112-EF4D-439A-874B-311294D3523C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
