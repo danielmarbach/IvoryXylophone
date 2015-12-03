@@ -46,20 +46,38 @@ namespace Anything
         public static void IvoryXylophone()
         {
             Console.CursorVisible = false;
+            Thread.Sleep(500);
 
             var arr = new[]
             {
-                @"  some bad ass ascii",
-                @"  "
+                @"     _   _______ ______   __            ____   ___   _ ____  ",
+                @"    | \ | \  ___)  _ \ \ / /           (___ \ / _ \ / |  __) ",
+                @"    |  \| |\ \  | |_) ) v / ___  _  __   __) ) | | |- | |__  ",
+                @"    |     | > > |  _ ( > < / _ \| |/ /  / __/| | | || |___ \ ",
+                @"    | |\  |/ /__| |_) ) ^ ( (_) ) / /  | |___| |_| || |___) )",
+                @"    |_| \_/_____)____/_/ \_\___/|__/   |_____)\___/ |_(____/ ",
             };
 
+            DrawText(arr);
+        }
+
+        private static void DrawText(string[] arr)
+        {
             var maxLength = arr.Aggregate(0, (max, line) => Math.Max(max, line.Length));
-            var x = Console.BufferWidth/2 - maxLength/2;
-            for (int y = -arr.Length; y < Console.WindowHeight + arr.Length; y++)
+            var x = Console.BufferWidth / 2 - maxLength / 2;
+            for (var y = -arr.Length; y < Console.WindowHeight + arr.Length; y++)
             {
                 ConsoleDraw(arr, x, y);
-                Thread.Sleep(100);
+                if (arr.Length > 1)
+                    Thread.Sleep(100);
             }
+        }
+
+        public static void Message(string[] morse)
+        {
+            Console.CursorVisible = false;
+
+            DrawText(morse);
         }
     }
 }
