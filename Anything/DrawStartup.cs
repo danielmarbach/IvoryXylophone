@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ColoredConsole;
 
 namespace Anything
 {
@@ -39,7 +40,7 @@ namespace Anything
             foreach (var line in linesToPrint)
             {
                 Console.SetCursorPosition(line.X, line.Y);
-                Console.Write(line.Text);
+                ColorConsole.Write(line.Text.Green());
             }
         }
 

@@ -22,8 +22,8 @@ namespace Anything
 
             var endpoint = Endpoint.Start(busConfiguration).GetAwaiter().GetResult();
             var context = endpoint.CreateBusContext();
-            
 
+            Console.ReadLine();
             DrawStartup.IvoryXylophone();
 
             //Thread.Sleep(100);

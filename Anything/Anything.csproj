@@ -34,6 +34,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ColoredConsole">
+      <HintPath>..\packages\ColoredConsole\lib\net45\ColoredConsole.dll</HintPath>
+    </Reference>
     <Reference Include="NServiceBus.Core">
       <HintPath>..\packages\NServiceBus\lib\net452\NServiceBus.Core.dll</HintPath>
     </Reference>
