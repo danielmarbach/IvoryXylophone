@@ -1,3 +1,5 @@
+using NServiceBus.GitTransport;
+
 namespace PepperPig
 {
     using System.Threading.Tasks;
@@ -15,6 +17,7 @@ namespace PepperPig
         {
             var busConfiguration = new BusConfiguration();
             busConfiguration.EndpointName(endpointName);
+//            busConfiguration.UseTransport<Git>().ConnectionString("bla");
             busConfiguration.UseSerialization<JsonSerializer>();
             busConfiguration.EnableInstallers();
             busConfiguration.UsePersistence<InMemoryPersistence>();

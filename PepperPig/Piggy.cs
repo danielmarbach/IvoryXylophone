@@ -51,10 +51,13 @@ namespace PepperPig
 
                     stream.MatchingTweetReceived += (sender, e) =>
                     {
+                        var userName = track.Replace('#', '@');
                         var command = new StartSaga
                         {
                             MessageId = Guid.NewGuid(),
-                            Text = e.Tweet.Text.Replace(track, null).Trim(),
+                            Text = e.Tweet.Text
+                                .Replace(track, null)
+                                .Replace(userName, null).Trim(),
                         };
                         endpoint.CreateBusContext().Send(command).Wait();
                     };

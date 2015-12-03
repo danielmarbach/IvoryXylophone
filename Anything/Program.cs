@@ -1,6 +1,7 @@
 ﻿using System;
 using Anything.Contracts;
 using NServiceBus;
+using NServiceBus.GitTransport;
 
 namespace Anything
 {
@@ -11,16 +12,14 @@ namespace Anything
             var busConfiguration = new BusConfiguration();
 
             busConfiguration.EndpointName("Anything");
+//            busConfiguration.UseTransport<Git>().ConnectionString("bla");
             busConfiguration.UseSerialization<JsonSerializer>();
             busConfiguration.EnableInstallers();
             busConfiguration.UsePersistence<InMemoryPersistence>();
             busConfiguration.LimitMessageProcessingConcurrencyTo(1);
             busConfiguration.SendFailedMessagesTo("error");
 
-            var endpoint = Endpoint.Start(busConfiguration).GetAwaiter().GetResult();
-
-            var context = endpoint.CreateBusContext();
-            context.SendLocal(new StartSaga { MessageId = Guid.NewGuid(), Text = "test" });
+            Endpoint.Start(busConfiguration).GetAwaiter().GetResult();
 
             //DrawStartup.IvoryXylophone();
             Console.ReadLine();

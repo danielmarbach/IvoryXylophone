@@ -66,6 +66,10 @@
       <Project>{847c150d-ef6d-4f5e-bd9a-54a194bf9c68}</Project>
       <Name>MorseLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NServiceBus.GitTransport\NServiceBus.GitTransport.csproj">
+      <Project>{31328de4-b736-4524-afdc-854820938fb0}</Project>
+      <Name>NServiceBus.GitTransport</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

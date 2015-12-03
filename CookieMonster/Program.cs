@@ -56,6 +56,7 @@ namespace CookieMonster
 
             var busConfiguration = new BusConfiguration();
             busConfiguration.EndpointName("CookieMonster");
+//            busConfiguration.UseTransport<Git>().ConnectionString("bla");
             busConfiguration.UseSerialization<JsonSerializer>();
             busConfiguration.EnableInstallers();
             busConfiguration.UsePersistence<InMemoryPersistence>();
