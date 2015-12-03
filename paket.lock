@@ -1,7 +1,23 @@
 NUGET
   remote: https://nuget.org/api/v2
   specs:
+    Autofac (3.5.2)
     LibGit2Sharp (0.21.0.176)
+    Microsoft.Bcl (1.1.10)
+      Microsoft.Bcl.Build (>= 1.0.14)
+    Microsoft.Bcl.Async (1.0.168)
+      Microsoft.Bcl (>= 1.1.8)
+    Microsoft.Bcl.Build (1.0.21) - import_targets: false
+    Microsoft.Net.Http (2.2.29)
+      Microsoft.Bcl (>= 1.1.10)
+      Microsoft.Bcl.Build (>= 1.0.14)
+    Newtonsoft.Json (7.0.1)
+    TweetinviAPI (0.9.10)
+      Autofac (>= 3.5.2)
+      Microsoft.Bcl.Async (>= 1.0.168)
+      Microsoft.Bcl.Build (>= 1.0.21)
+      Microsoft.Net.Http (>= 2.2.29)
+      Newtonsoft.Json (>= 7.0.1)
   remote: https://www.myget.org/F/particular
   specs:
     NServiceBus (6.0.0-unstable1150)
