@@ -3,7 +3,7 @@ using NServiceBus;
 
 namespace Anything.Contracts
 {
-    public class MessageConvertingDone : IEvent
+    public class SendConvertedMessage : ICommand
     {
         public Guid MessageId { get; set; }
         public string Message { get; set; }

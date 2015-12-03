@@ -50,10 +50,12 @@ namespace Anything
 
         public Task Handle(AddMorseChar message, IMessageHandlerContext context)
         {
+            if (Data.MorseList == null) Data.MorseList = new List<string>();
+
             Data.MorseList.Add(message.Morse);
             if (Data.OrigMessageText.Length == Data.MorseList.Count)
             {
-                context.SendLocal(new MessageConvertingDone { MessageId = message.MessageId, Message = MorseConverter.FromMorse(Data.MorseList.ToArray()) });
+                context.SendLocal(new SendConvertedMessage { MessageId = message.MessageId, Message = MorseConverter.FromMorse(Data.MorseList.ToArray()) });
             }
             return Task.FromResult(0);
         }
