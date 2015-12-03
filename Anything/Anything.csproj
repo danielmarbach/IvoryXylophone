@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BadAssSaga.cs" />
+    <Compile Include="DecodedMessageRelayHubFacility.cs" />
     <Compile Include="DrawStartup.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,6 +57,10 @@
     <ProjectReference Include="..\Anything.Contracts\Anything.Contracts.csproj">
       <Project>{6ea32112-ef4d-439a-874b-311294d3523c}</Project>
       <Name>Anything.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CookieMonster.Contracts\CookieMonster.Contracts.csproj">
+      <Project>{54fc2842-22ae-4b5a-bd47-19968c32c17c}</Project>
+      <Name>CookieMonster.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\MorseLib\MorseLib.csproj">
       <Project>{847c150d-ef6d-4f5e-bd9a-54a194bf9c68}</Project>

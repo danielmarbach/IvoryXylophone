@@ -1,8 +1,8 @@
 ﻿using NServiceBus;
 
-namespace Anything.Contracts
+namespace CookieMonster.Contracts
 {
-    public class KnockKnock: IEvent
+    public class EatYummieCookies: ICommand
     {
         public string Message { get; set; }
     }

@@ -10,9 +10,13 @@ namespace Anything
         {
             var busConfiguration = new BusConfiguration();
 
+            busConfiguration.EndpointName("Anything");
+            busConfiguration.UseSerialization<JsonSerializer>();
+            busConfiguration.EnableInstallers();
             busConfiguration.UsePersistence<InMemoryPersistence>();
-            busConfiguration.SendFailedMessagesTo("error");
             busConfiguration.LimitMessageProcessingConcurrencyTo(1);
+            busConfiguration.SendFailedMessagesTo("error");
+
             var endpoint = Endpoint.Start(busConfiguration).GetAwaiter().GetResult();
 
             var context = endpoint.CreateBusContext();
