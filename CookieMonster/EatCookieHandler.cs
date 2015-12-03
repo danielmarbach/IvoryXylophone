@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using ColoredConsole;
 using CookieMonster.Contracts;
 using NServiceBus;
 
@@ -12,6 +14,15 @@ namespace CookieMonster
                 Program.ConsumerSecret, 
                 Program.AccessToken, 
                 Program.AccessTokenSecret);
+
+            ColorConsole.WriteLine(
+                            $"{DateTime.UtcNow.ToLocalTime()}".DarkGray(),
+                            " ",
+                            $"Cookies!!! Yum yum yum yum!".White().OnBlue(),
+                            " ",
+                            "Cookie says: ".Gray(),
+                            " ",
+                            $"{message.Message}".White());
 
             service.Publish(message.Message);
             return Task.FromResult(0);
