@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CookieMonster</RootNamespace>
     <AssemblyName>CookieMonster</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,6 +57,10 @@
     <ProjectReference Include="..\Anything.Contracts\Anything.Contracts.csproj">
       <Project>{6ea32112-ef4d-439a-874b-311294d3523c}</Project>
       <Name>Anything.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NServiceBus.GitTransport\NServiceBus.GitTransport.csproj">
+      <Project>{31328de4-b736-4524-afdc-854820938fb0}</Project>
+      <Name>NServiceBus.GitTransport</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

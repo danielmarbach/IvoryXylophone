@@ -35,7 +35,7 @@ namespace NServiceBus.GitTransport
         {
             poller = Task.Run(async () =>
             {
-                using (var repo = new Repository($"../{endpointName}", null))
+                using (var repo = new Repository($"../../../../{endpointName}", null))
                 {
                     while (!tokenSource.IsCancellationRequested)
                     {
