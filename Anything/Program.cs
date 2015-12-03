@@ -7,13 +7,17 @@ namespace Anything
     {
         public static void Main(string[] args)
         {
-            // TODO remove when message is re
             var busConfiguration = new BusConfiguration();
 
-            Endpoint.Start(busConfiguration).Start();
-            
+            busConfiguration.UsePersistence<InMemoryPersistence>();
+            busConfiguration.SendFailedMessagesTo("error");
+            busConfiguration.LimitMessageProcessingConcurrencyTo(1);
+            var endpoint = Endpoint.Start(busConfiguration).GetAwaiter().GetResult();
 
-            DrawStartup.IvoryXylophone();
+            var context = endpoint.CreateBusContext();
+            context.SendLocal(new StartSaga { MessageId = Guid.NewGuid() });
+
+            //DrawStartup.IvoryXylophone();
             Console.ReadLine();
         }
     }

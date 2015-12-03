@@ -5,19 +5,23 @@ using NServiceBus;
 namespace Anything
 {
     public class BadAssSaga : Saga<BadAssSaga.SagaData>,
-        IAmStartedByMessages<StartSaga>
+        IAmStartedByMessages<StartSaga>,
+        IHandleMessages<AddMorseChar>
     {
         public class SagaData : ContainSagaData
         {
+            public Guid MessageId { get; set; }
         }
 
         protected override void ConfigureHowToFindSaga(SagaPropertyMapper<SagaData> mapper)
         {
-            throw new NotImplementedException();
+            mapper.ConfigureMapping<StartSaga>(x => x.MessageId).ToSaga(s => s.MessageId);
+            mapper.ConfigureMapping<AddMorseChar>(x => x.MessageId).ToSaga(s => s.MessageId);
         }
 
-        public Task Handle(StartSaga message, IMessageHandlerContext context)
+        public async Task Handle(StartSaga message, IMessageHandlerContext context)
         {
+            //Data.MessageId = message.MessageId;
             /*
             H	....
             E	.
@@ -32,16 +36,26 @@ namespace Anything
             D	-..
             Full-stop (period)	.-.-.-
             */
-            context.SendLocal(new AddMorseChar());
+            await context.SendLocal(new AddMorseChar { MessageId = message.MessageId });
+            await context.SendLocal(new AddMorseChar { MessageId = message.MessageId });
+            await context.SendLocal(new AddMorseChar { MessageId = message.MessageId });
+            await context.SendLocal(new AddMorseChar { MessageId = message.MessageId });
+        }
+
+        public Task Handle(AddMorseChar message, IMessageHandlerContext context)
+        {
+
             return Task.FromResult(0);
         }
     }
 
     public class AddMorseChar : ICommand
     {
+        public Guid MessageId { get; set; }
     }
 
     public class StartSaga : ICommand
     {
+        public Guid MessageId { get; set; }
     }
 }
