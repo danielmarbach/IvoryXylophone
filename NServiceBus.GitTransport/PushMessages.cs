@@ -13,7 +13,7 @@ namespace NServiceBus.GitTransport
 {
     public class PushMessages : IPushMessages
     {
-        private readonly string endpointName;
+        private readonly EndpointName endpointName;
         private Func<PushContext, Task> pipe;
         private Task poller;
 
@@ -21,7 +21,7 @@ namespace NServiceBus.GitTransport
 
         private CancellationTokenSource tokenSource = new CancellationTokenSource();
 
-        public PushMessages(string endpointName)
+        public PushMessages(EndpointName endpointName)
         {
             this.endpointName = endpointName;
         }

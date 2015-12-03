@@ -10,7 +10,7 @@ namespace NServiceBus.GitTransport
     {
         protected override void ConfigureForReceiving(TransportReceivingConfigurationContext context)
         {
-            context.SetMessagePumpFactory(c => new PushMessages());
+            context.SetMessagePumpFactory(c => new PushMessages(context.Settings.EndpointInstanceName().EndpointName));
         }
 
         protected override void ConfigureForSending(TransportSendingConfigurationContext context)
