@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="KnockKnock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StartSaga.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="paket.references" />

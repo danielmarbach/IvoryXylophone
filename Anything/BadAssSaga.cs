@@ -21,7 +21,6 @@ namespace Anything
 
         public async Task Handle(StartSaga message, IMessageHandlerContext context)
         {
-            //Data.MessageId = message.MessageId;
             /*
             H	....
             E	.
@@ -50,11 +49,6 @@ namespace Anything
     }
 
     public class AddMorseChar : ICommand
-    {
-        public Guid MessageId { get; set; }
-    }
-
-    public class StartSaga : ICommand
     {
         public Guid MessageId { get; set; }
     }
