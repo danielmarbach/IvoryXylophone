@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Anything.Contracts;
 using MorseLib;
@@ -13,6 +14,8 @@ namespace Anything
         public class SagaData : ContainSagaData
         {
             public Guid MessageId { get; set; }
+            public List<string> MorseList { get; set; }
+            public string OrigMessageText { get; set; }
         }
 
         protected override void ConfigureHowToFindSaga(SagaPropertyMapper<SagaData> mapper)
@@ -37,18 +40,21 @@ namespace Anything
             D	-..
             Full-stop (period)	.-.-.-
             */
+            Data.OrigMessageText = message.Text;
             var toMorse = MorseConverter.ToMorse(message.Text);
-            
-
-            await context.SendLocal(new AddMorseChar { MessageId = message.MessageId });
-            await context.SendLocal(new AddMorseChar { MessageId = message.MessageId });
-            await context.SendLocal(new AddMorseChar { MessageId = message.MessageId });
-            await context.SendLocal(new AddMorseChar { MessageId = message.MessageId });
+            foreach (var s in toMorse)
+            {
+                await context.SendLocal(new AddMorseChar { MessageId = message.MessageId, Morse = s });
+            }
         }
 
         public Task Handle(AddMorseChar message, IMessageHandlerContext context)
         {
-
+            Data.MorseList.Add(message.Morse);
+            if (Data.OrigMessageText.Length == Data.MorseList.Count)
+            {
+                context.SendLocal(new MessageConvertingDone { MessageId = message.MessageId, Message = MorseConverter.FromMorse(Data.MorseList.ToArray()) });
+            }
             return Task.FromResult(0);
         }
     }
@@ -56,5 +62,6 @@ namespace Anything
     public class AddMorseChar : ICommand
     {
         public Guid MessageId { get; set; }
+        public string Morse { get; set; }
     }
 }

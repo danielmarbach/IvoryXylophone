@@ -16,7 +16,7 @@ namespace Anything
             var endpoint = Endpoint.Start(busConfiguration).GetAwaiter().GetResult();
 
             var context = endpoint.CreateBusContext();
-            context.SendLocal(new StartSaga { MessageId = Guid.NewGuid() });
+            context.SendLocal(new StartSaga { MessageId = Guid.NewGuid(), Text = "test" });
 
             //DrawStartup.IvoryXylophone();
             Console.ReadLine();
