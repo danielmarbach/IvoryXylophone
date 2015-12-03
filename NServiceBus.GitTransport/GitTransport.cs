@@ -15,7 +15,7 @@ namespace NServiceBus.GitTransport
 
         protected override void ConfigureForSending(TransportSendingConfigurationContext context)
         {
-            context.SetDispatcherFactory(() => new Dispatcher());
+            context.SetDispatcherFactory(() => new Dispatcher(context.GlobalSettings.EndpointName()));
         }
 
         public override IEnumerable<Type> GetSupportedDeliveryConstraints()
