@@ -10,6 +10,7 @@ namespace NServiceBus.GitTransport
     {
         protected override void ConfigureForReceiving(TransportReceivingConfigurationContext context)
         {
+            context.SetMessagePumpFactory(c => new PushMessages());
         }
 
         protected override void ConfigureForSending(TransportSendingConfigurationContext context)
@@ -18,7 +19,7 @@ namespace NServiceBus.GitTransport
 
         public override IEnumerable<Type> GetSupportedDeliveryConstraints()
         {
-            return default(IEnumerable<>);
+            return new List<Type>();
         }
 
         public override TransactionSupport GetTransactionSupport()
