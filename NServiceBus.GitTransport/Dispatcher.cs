@@ -19,7 +19,10 @@ namespace NServiceBus.GitTransport
         {
             using (var repo = new Repository($"../{endpointName}", null))
             {
-
+                foreach (var operation in outgoingMessages)
+                {
+                    
+                }
             }
             return Task.FromResult(0);
         }
