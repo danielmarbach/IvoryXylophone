@@ -11,6 +11,7 @@ namespace MorseLib
     {
         static readonly Dictionary<string, string> conversions;
         static readonly Dictionary<string, string> reverseConversions;
+        
 
         static MorseConverter()
         {
