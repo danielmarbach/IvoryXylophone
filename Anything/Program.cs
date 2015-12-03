@@ -1,4 +1,5 @@
 ﻿using System;
+using Anything.Contracts;
 using NServiceBus;
 
 namespace Anything

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Anything.Contracts;
+using MorseLib;
 using NServiceBus;
 
 namespace Anything
@@ -35,6 +37,9 @@ namespace Anything
             D	-..
             Full-stop (period)	.-.-.-
             */
+            var toMorse = MorseConverter.ToMorse(message.Text);
+            
+
             await context.SendLocal(new AddMorseChar { MessageId = message.MessageId });
             await context.SendLocal(new AddMorseChar { MessageId = message.MessageId });
             await context.SendLocal(new AddMorseChar { MessageId = message.MessageId });
