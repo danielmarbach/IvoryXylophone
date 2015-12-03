@@ -2,6 +2,7 @@ NUGET
   remote: https://nuget.org/api/v2
   specs:
     Autofac (3.5.2)
+    ColoredConsole (0.4.0)
     LibGit2Sharp (0.21.0.176)
     Microsoft.Bcl (1.1.10)
       Microsoft.Bcl.Build (>= 1.0.14)

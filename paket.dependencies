@@ -5,3 +5,4 @@ nuget NServiceBus 6.0.0-unstable1150
 nuget LibGit2Sharp
 nuget TweetinviAPI
 nuget NUnit 2.6.4
+nuget ColoredConsole
